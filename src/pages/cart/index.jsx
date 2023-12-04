@@ -45,7 +45,7 @@ export default function Cart() {
                                     <Row>
                                         <Col xs="8">
                                             <div className="order-product-icon"style={{
-                                                backgroundImage: `url("img/${item.img_name}")`,
+                                                backgroundImage: `url("${process.env.PUBLIC_URL}/img/${item.img_name}")`,
                                                 width: '50px',
                                                 height: '50px'
                                             }}></div>

@@ -119,7 +119,7 @@ export default function Signup() {
             <Row>
                 <Col></Col>
                 <Col lg="5">
-                    <img src="/mdmx.png"
+                    <img src={`${process.env.PUBLIC_URL}/mdmx.png`}
                     alt="Mad Max Burger Logo"
                     onClick={() => navigate('/')}
                     style={{ width: '100px', margin: '20px 0px', cursor: 'pointer' }} />

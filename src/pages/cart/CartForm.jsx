@@ -49,7 +49,7 @@ const CartForm = ({
                 <Container fluid>
                     <Row>
                         <Col>
-                            <div className="order-product-icon" style={{ backgroundImage: `url("img/${product.img_name}")`, width: '100%', height: '140px' }}></div>
+                            <div className="order-product-icon" style={{ backgroundImage: `url("${process.env.PUBLIC_URL}/img/${product.img_name}")`, width: '100%', height: '140px' }}></div>
                         </Col>
                         <Col xs="8">
                             <p>{product.description}</p>

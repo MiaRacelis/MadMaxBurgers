@@ -20,13 +20,13 @@ export default function App() {
         navigate('/login')
     };
     return (<>
-        { isLoggedIn() && <Sidebar brand={{ title: user ? `Welcome ${user.first_name}!` : '', logo: 'mdmx.png'  }}
+        { isLoggedIn() && <Sidebar brand={{ title: user ? `Welcome ${user.first_name}!` : '', logo: `${process.env.PUBLIC_URL}/mdmx.png` }}
         links={sidebarLinks}
         buttons={[{ text: 'Logout', handleClick: () => logout(), color: 'warning' }]} /> }
         { !isLoggedIn() && <Navbar className="mdmx-warning mb-3">
             <Container fluid>
                 <Navbar.Brand href="#">
-                    <img src="mdmx.png"
+                    <img src={`${process.env.PUBLIC_URL}/mdmx.png`}
                     width="30"
                     height="30"
                     className="d-inline-block align-top"

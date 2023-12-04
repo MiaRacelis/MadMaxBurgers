@@ -91,7 +91,7 @@ function OrderDetails(props) {
                     <ListGroup.Item><b>Orders</b>:</ListGroup.Item>
                     { details.items.map((item, index) => (
                         <ListGroup.Item key={index}>
-                            <div className="order-product-icon" style={{ backgroundImage: `url("img/${item.product.img_name}")` }}></div>
+                            <div className="order-product-icon" style={{ backgroundImage: `url("${process.env.PUBLIC_URL}/img/${item.product.img_name}")` }}></div>
                             <span>{item.quantity} x {item.product.name}</span>
                             <span className="order-product-price">{ formatAmountWithCurrency(item.totalProductPrice) }</span>
                         </ListGroup.Item>

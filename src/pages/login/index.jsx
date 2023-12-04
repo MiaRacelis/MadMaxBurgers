@@ -47,7 +47,7 @@ export default function Login() {
                 <Col></Col>
                 <Col lg="5" md="6">
                     <Row className="justify-content-center text-center">
-                        <img src="/mdmx.png"
+                        <img src={`${process.env.PUBLIC_URL}/mdmx.png`}
                         alt="Mad Max Burger Logo"
                         onClick={ () => navigate('/') }
                         style={{ width: '100px', margin: '80px 15px 30px', cursor: 'pointer' }} />
