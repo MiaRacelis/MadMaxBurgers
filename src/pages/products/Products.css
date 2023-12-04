@@ -8,3 +8,11 @@
 .mdmx-product-unavailable {
     opacity: 0.3;
 }
+
+@media only screen and (max-width: 500px) {
+    .mdmx-products {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: unset;
+    }
+}

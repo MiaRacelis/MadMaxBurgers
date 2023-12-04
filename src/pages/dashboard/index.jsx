@@ -55,7 +55,7 @@ export default function Dashboard() {
                     </Col>
                 </Row>
                 <Row style={{ marginBottom: '40px' }}>
-                    <Col>
+                    <Col lg="6" md="8">
                         <Chart
                         chartType="PieChart"
                         data={pieChartData}
@@ -63,7 +63,7 @@ export default function Dashboard() {
                         height="400px"
                         legendToggle/>
                     </Col>
-                    <Col>
+                    <Col lg="6" md="8">
                         <Chart
                         chartType="Line"
                         width="100%"

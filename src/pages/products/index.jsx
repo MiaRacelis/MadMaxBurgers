@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -133,36 +136,39 @@ export default function Products() {
         setProductFormShown(false);
     };
 
-    return (<div className="mdmx-page-content">
+    return (<>
+        <Container fluid>
+            <Row>
+                { productFormShown && <ProductForm
+                product={product}
+                show={productFormShown}
+                onHide={() => setProductFormShown(false)}
+                handleProductChange={handleProductChange}
+                handleProductAdd={handleProductAdd}
+                handleProductUpdate={handleProductUpdate} /> }
 
-        { productFormShown && <ProductForm
-            product={product}
-            show={productFormShown}
-            onHide={() => setProductFormShown(false)}
-            handleProductChange={handleProductChange}
-            handleProductAdd={handleProductAdd}
-            handleProductUpdate={handleProductUpdate} /> }
-
-        <h1>My Products</h1>
-        <div className="mdmx-products">
-            { productsList.sort((p1,p2) => p2.id - p1.id).map(product => (
-                <Card
-                    key={product.id}
-                    data={product}
-                    img={product.img_name || 'fallbackburger.png'}
-                    title={product.name}
-                    text={product.description}
-                    classes={parseInt(product.quantity) === 0 ? 'mdmx-product-unavailable' : ''}
-                    footer={parseInt(product.quantity) !== 0
-                        ? formatAmountWithCurrency(parseFloat(product.price))
-                        : 'Unavailable'}
-                    handleClick={handleCardClick} />
-            ))}
-        </div>
-        <button className="mdmx-float" onClick={() => {
-            setProduct(PRODUCT_INIT_DATA);
-            setProductFormShown(true);}}>
-            +
-        </button>
-    </div>)
+                <h1>My Products</h1>
+                <div className="mdmx-products">
+                    { productsList.sort((p1,p2) => p2.id - p1.id).map(product => (
+                        <Card
+                            key={product.id}
+                            data={product}
+                            img={product.img_name || 'fallbackburger.png'}
+                            title={product.name}
+                            text={product.description}
+                            classes={parseInt(product.quantity) === 0 ? 'mdmx-product-unavailable' : ''}
+                            footer={parseInt(product.quantity) !== 0
+                                ? formatAmountWithCurrency(parseFloat(product.price))
+                                : 'Unavailable'}
+                            handleClick={handleCardClick} />
+                    ))}
+                </div>
+                <button className="mdmx-float" onClick={() => {
+                    setProduct(PRODUCT_INIT_DATA);
+                    setProductFormShown(true);}}>
+                    +
+                </button>
+            </Row>
+        </Container>
+    </>)
 }

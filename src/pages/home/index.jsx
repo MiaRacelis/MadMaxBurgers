@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
     Col,
     Container,
     Form,
-    Nav, Navbar,
     Row
 } from 'react-bootstrap';
 
@@ -30,7 +28,6 @@ const getCart = () => {
 };
 
 export default function Home() {
-    const navigate = useNavigate();
     const [ product, setProduct ] = useState(PRODUCT_INIT_DATA);
     const [ productFormShown, setProductFormShown ] = useState(false);
     const [ productSearch, setProductSearch ] = useState('');
