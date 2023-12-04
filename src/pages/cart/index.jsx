@@ -24,7 +24,7 @@ export default function Cart() {
         <Container>
             <Row>
                 <Col></Col>
-                <Col md="7">
+                <Col sm="12" lg="8">
                     <Row style={{ margin: '10px 15px' }}>
                         <Col><h2>My Cart</h2></Col>
                         <Col>
