@@ -118,7 +118,7 @@ export default function Signup() {
         <Container>
             <Row>
                 <Col></Col>
-                <Col>
+                <Col lg="5">
                     <img src="/mdmx.png"
                     alt="Mad Max Burger Logo"
                     onClick={() => navigate('/')}
