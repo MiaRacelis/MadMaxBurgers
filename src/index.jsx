@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
   Navigate
 } from 'react-router-dom';
@@ -73,7 +73,7 @@ const sidebarLinks = pages.filter(page => isLoggedIn
   && Array.from(page.allowed_roles).includes(user.role)
   && page.shown_in_nav);
 
-const router = createBrowserRouter(routes);
+const router = createHashRouter(routes);
 
 const logout = () => {
   localStorage.removeItem(STORAGE_ITEMS.user);
