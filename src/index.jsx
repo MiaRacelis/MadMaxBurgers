@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
   Navigate
 } from 'react-router-dom';
@@ -24,7 +24,6 @@ import {
 import reportWebVitals from './reportWebVitals';
 import { STORAGE_ITEMS, itemExists, getItem, storeItems } from './utils/storage-utils';
 
-const BASE_PATH = '/MadMaxBurgers';
 const pages = require('./assets/pages.json');
 
 const isAuthenticated = getItem(STORAGE_ITEMS.isAuth) || false;
@@ -67,14 +66,14 @@ const roleHasAccess = page => {
 let routes = pages
   .filter(page => isLoggedIn === page.private || isPublic(page))
   .filter(roleHasAccess)
-  .map(page => ({ path: `${BASE_PATH}${page.path}`, element: routerElements[page.key]}));
-routes = [...routes, { path: '*', element: <Navigate to={BASE_PATH} replace /> }];
+  .map(page => ({ path: page.path, element: routerElements[page.key]}));
+routes = [...routes, { path: '*', element: <Navigate to="/" replace /> }];
 
 const sidebarLinks = pages.filter(page => isLoggedIn
   && Array.from(page.allowed_roles).includes(user.role)
   && page.shown_in_nav);
 
-const router = createBrowserRouter(routes);
+const router = createHashRouter(routes);
 
 const logout = () => {
   localStorage.removeItem(STORAGE_ITEMS.user);
