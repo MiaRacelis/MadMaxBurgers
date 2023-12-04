@@ -19,6 +19,7 @@
 @media only screen and (max-width: 500px) {
     .card {
         width: 100% !important;
+        margin: 20px 0px;
     }
     .card-img {
         height: 400px;

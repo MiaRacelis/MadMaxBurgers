@@ -98,7 +98,7 @@ export default function Home() {
         <Container fluid>
             <Row className="justify-content-end">
                 <Col lg="3" md="6">
-                    <Form className="d-flex">
+                    <Form>
                         <Form.Control type="text" value={productSearch} onChange={handleProductSearch} placeholder="Search" className="me-2" />
                     </Form>
                 </Col>
