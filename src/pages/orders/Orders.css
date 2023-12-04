@@ -1,0 +1,14 @@
+.order-product-icon {
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+    background-size: cover;
+    background-position: center
+}
+
+.order-product-price {
+    position: absolute;
+    right: 0;
+}

@@ -1,0 +1,18 @@
+[
+    {
+        "text": "preparing",
+        "contextual_class": "warning"
+    },
+    {
+        "text": "ready",
+        "contextual_class": "info"
+    },
+    {
+        "text": "delivered",
+        "contextual_class": "success"
+    },
+    {
+        "text": "cancelled",
+        "contextual_class": "danger"
+    }
+]

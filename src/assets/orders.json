@@ -1,0 +1,214 @@
+[
+    {
+        "id": "MDMXB-MGR123",
+        "order_date_time": "December 1, 2023 11:06 AM",
+        "payment_mode": "Cash on Delivery",
+        "status": "preparing",
+        "notes": "Don't forget the sauce...",
+        "delivery_instructions": "Call me when you're near my house.",
+        "customer": {
+            "id": 2,
+            "username": "miyang",
+            "email_address": "miaracelis.edu@gmail.com",
+            "mobile_number": "+639187530891",
+            "first_name": "Mia",
+            "middle_name": "G.",
+            "last_name": "Racelis",
+            "address": "Phase 9 Package 8 Block 79 Lot 17, Barangay 176, Bagong Silang, Caloocan City"
+        },
+        "items": [
+            {
+                "product": {
+                    "id": 1,
+                    "name": "Cheese-Madness Burger",
+                    "description": "Get mad with our super Cheeesy cheese burger!",
+                    "price": "99.00",
+                    "img_name": "cheeseburger.jpg"
+                },
+                "quantity": 2
+            },
+            {
+                "product": {
+                    "id": 4,
+                    "name": "Double-Trouble Cheesy Burger",
+                    "description": "Prepare for trouble, and eat it double!",
+                    "price": "220.00",
+                    "img_name": "dblcheeseburger.png"
+                },
+                "quantity": 3
+            },
+            {
+                "product": {
+                    "id": 2,
+                    "name": "Bacon-Bad Burger",
+                    "description": "Be greedy, be mad, be bad for our bacon burger!",
+                    "price": "150.00",
+                    "img_name": "baconburger.jpg",
+                    "created_at": "November 30, 2023"
+                },
+                "quantity": 15
+            }
+        ]
+    },
+    {
+        "id": "MDMXB-F1T314",
+        "order_date_time": "November 29, 2023 7:00 PM",
+        "payment_mode": "",
+        "status": "cancelled",
+        "notes": "",
+        "cancel_reason": "Changed my mind.",
+        "delivery_instructions": "",
+        "customer": {
+            "id": 8,
+            "username": "harveeey",
+            "email_address": "harvey.specter@suits.com",
+            "mobile_number": "+639203216129",
+            "first_name": "Harvey",
+            "middle_name": "",
+            "last_name": "Specter",
+            "address": "Makati City"
+        },
+        "items": [
+            {
+                "product": {
+                    "id": 3,
+                    "name": "Flaming-Hot Spicy Burger",
+                    "description": "Eat if you can take the heat of our flaming-hot spicy burger!",
+                    "price": "180.00",
+                    "img_name": "spicyburger.jpg"
+                },
+                "quantity": 5
+            },
+            {
+                "product": {
+                    "id": 6,
+                    "name": "Pizza Burger",
+                    "description": "Tired of plain old burger? then try our PIZZA Burger!",
+                    "price": "135.00",
+                    "img_name": "pizzaburger.png"
+                },
+                "quantity": 1
+            },
+            {
+                "product": {
+                    "id": 7,
+                    "name": "Meat-All-You-Can Burger",
+                    "description": "Hope you can eat this one hell of a meat!",
+                    "price": "515.00",
+                    "img_name": "meatyburger.jpg"
+                },
+                "quantity": 3
+            }
+        ]
+    },
+    {
+        "id": "MDMXB-JKY281",
+        "order_date_time": "November 7, 2023 2:45 PM",
+        "payment_mode": "Credit Card",
+        "status": "delivered",
+        "notes": "",
+        "delivery_instructions": "",
+        "customer": {
+            "id": 13,
+            "username": "keverdeen",
+            "email_address": "katniss.everdeen@hungergames.com",
+            "mobile_number": "+639146181682",
+            "first_name": "Katniss",
+            "middle_name": "",
+            "last_name": "Everdeen",
+            "address": "Quezon City"
+        },
+        "items": [
+            {
+                "product": {
+                    "id": 8,
+                    "name": "Chick N Burger",
+                    "description": "Tired of beef? then try our chicken burger!",
+                    "price": "199.00",
+                    "img_name": "chickenburger.jpg"
+                },
+                "quantity": 10
+            }
+        ]
+    },
+    {
+        "id": "MDMXB-BAV165",
+        "order_date_time": "October 21, 2023 9:27 AM",
+        "payment_mode": "Cash on Delivery",
+        "status": "delivered",
+        "notes": "",
+        "delivery_instructions": "Call me when you're near my house.",
+        "customer": {
+            "id": 9,
+            "username": "yougotlittup",
+            "email_address": "louis.litt@suits.com",
+            "mobile_number": "+639690171169",
+            "first_name": "Louis",
+            "middle_name": "",
+            "last_name": "Litt",
+            "address": "Pasig City"
+        },
+        "items": [
+            {
+                "product": {
+                    "id": 1,
+                    "name": "Cheese-Madness Burger",
+                    "description": "Get mad with our super Cheeesy cheese burger!",
+                    "price": "99.00",
+                    "img_name": "cheeseburger.jpg"
+                },
+                "quantity": 2
+            },
+            {
+                "product": {
+                    "id": 4,
+                    "name": "Double-Trouble Cheesy Burger",
+                    "description": "Prepare for trouble, and eat it double!",
+                    "price": "220.00",
+                    "img_name": "dblcheeseburger.png"
+                },
+                "quantity": 3
+            }
+        ]
+    },
+    {
+        "id": "MDMXB-JMH111",
+        "order_date_time": "December 1, 2023 8:32 AM",
+        "payment_mode": "Debit Card",
+        "status": "order placed",
+        "notes": "Make if freshly cooked!",
+        "delivery_instructions": "",
+        "customer": {
+            "id": 3,
+            "username": "intellijm",
+            "email_address": "intellijm@gmail.com",
+            "mobile_number": "+639213711411",
+            "first_name": "JM",
+            "middle_name": "",
+            "last_name": "",
+            "address": "Bagong Silang, Caloocan City"
+        },
+        "items": [
+            {
+                "product": {
+                    "id": 7,
+                    "name": "Meat-All-You-Can Burger",
+                    "description": "Hope you can eat this one hell of a meat!",
+                    "price": "515.00",
+                    "img_name": "meatyburger.jpg"
+                },
+                "quantity": 1
+            },
+            {
+                "product": {
+                    "id": 8,
+                    "name": "Chick N Burger",
+                    "description": "Tired of beef? then try our chicken burger!",
+                    "price": "199.00",
+                    "img_name": "chickenburger.jpg"
+                },
+                "quantity": 1
+            }
+        ]
+    }
+]

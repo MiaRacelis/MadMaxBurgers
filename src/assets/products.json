@@ -1,0 +1,92 @@
+[
+    {
+        "id": 11,
+        "name": "No-Bun-Burger",
+        "description": "Tired of buns? then try our bun-less burger!",
+        "price": 90.00,
+        "img_name": "nobunburger.jpg",
+        "quantity": 100,
+        "created_at": "December 3, 2023"
+    },
+    {
+        "id": 12,
+        "name": "Veggie Burger",
+        "description": "Healthy veggie burger",
+        "price": 80.00,
+        "img_name": "veggieburgers.jpg",
+        "quantity": 100,
+        "created_at": "December 3, 2023"
+    },
+    {
+        "id": 13,
+        "name": "Cheese-Madness Burger",
+        "description": "Get mad with our super Cheeesy cheese burger!",
+        "price": 99.00,
+        "img_name": "cheeseburger.jpg",
+        "quantity": 100,
+        "created_at": "December 1, 2023"
+    },
+    {
+        "id": 14,
+        "name": "Bacon-Bad Burger",
+        "description": "Be greedy, be mad, be bad for our bacon burger!",
+        "price": 150.00,
+        "img_name": "baconburger.jpg",
+        "quantity": 100,
+        "created_at": "November 30, 2023"
+    },
+    {
+        "id": 15,
+        "name": "Flaming-Hot Spicy Burger",
+        "description": "Eat if you can take the heat of our flaming-hot spicy burger!",
+        "price": 180.00,
+        "img_name": "spicyburger.jpg",
+        "quantity": 100,
+        "created_at": "November 29, 2023"
+    },
+    {
+        "id": 16,
+        "name": "Double-Trouble Cheesy Burger",
+        "description": "Prepare for trouble, and eat it double!",
+        "price": 220.00,
+        "img_name": "dblcheeseburger.png",
+        "quantity": 100,
+        "created_at": "November 29, 2023"
+    },
+    {
+        "id": 17,
+        "name": "Triple-Threat Cheesy Burger",
+        "description": "Not single, not double, but triple cheese burger!",
+        "price": 350.00,
+        "img_name": "trplcheeseburger.jpeg",
+        "quantity": 100,
+        "created_at": "November 28, 2023"
+    },
+    {
+        "id": 18,
+        "name": "Pizza Burger",
+        "description": "Tired of plain old burger? then try our PIZZA Burger!",
+        "price": 135.00,
+        "img_name": "pizzaburger.png",
+        "quantity": 100,
+        "created_at": "November 27, 2023"
+    },
+    {
+        "id": 19,
+        "name": "Meat-All-You-Can Burger",
+        "description": "Hope you can eat this one hell of a meat!",
+        "price": 515.00,
+        "img_name": "meatyburger.jpg",
+        "quantity": 100,
+        "created_at": "November 27, 2023"
+    },
+    {
+        "id": 20,
+        "name": "Chick N Burger",
+        "description": "Tired of beef? then try our chicken burger!",
+        "price": 199.00,
+        "img_name": "chickenburger.jpg",
+        "quantity": 100,
+        "created_at": "November 27, 2023"
+    }
+]

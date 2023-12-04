@@ -1,0 +1,10 @@
+.mdmx-products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mdmx-product-unavailable {
+    opacity: 0.3;
+}

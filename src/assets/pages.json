@@ -1,0 +1,90 @@
+[
+    {
+        "key": "home",
+        "path": "/",
+        "label": "Order Now",
+        "private": false,
+        "allowed_roles": [],
+        "shown_in_nav": true
+    },
+    {
+        "key": "login",
+        "path": "/login",
+        "label": "Login",
+        "private": false,
+        "allowed_roles": [],
+        "shown_in_nav": false
+    },
+    {
+        "key": "signup",
+        "path": "/sign-up",
+        "label": "Sign Up",
+        "private": false,
+        "allowed_roles": [],
+        "shown_in_nav": false
+    },
+    {
+        "key": "dashboard",
+        "path": "/dashboard",
+        "label": "Dashboard",
+        "private": true,
+        "allowed_roles": ["seller"],
+        "shown_in_nav": true
+    },
+    {
+        "key": "orders",
+        "path": "/orders",
+        "label": "Orders",
+        "private": true,
+        "allowed_roles": ["seller"],
+        "shown_in_nav": true
+    },
+    {
+        "key": "products",
+        "path": "/products",
+        "label": "Products",
+        "private": true,
+        "allowed_roles": ["seller"],
+        "shown_in_nav": true
+    },
+    {
+        "key": "customers",
+        "path": "/customers",
+        "label": "Customers",
+        "private": true,
+        "allowed_roles": ["seller"],
+        "shown_in_nav": true
+    },
+    {
+        "key": "profile",
+        "path": "/profile",
+        "label": "My Profile",
+        "private": true,
+        "allowed_roles": ["buyer"],
+        "shown_in_nav": true
+    },
+    {
+        "key": "cart",
+        "path": "/cart",
+        "label": "My Cart",
+        "private": true,
+        "allowed_roles": ["buyer"],
+        "shown_in_nav": true
+    },
+    {
+        "key": "orderHistory",
+        "path": "/order-history",
+        "label": "Order History",
+        "private": true,
+        "allowed_roles": ["buyer"],
+        "shown_in_nav": true
+    },
+    {
+        "key": "checkout",
+        "path": "/checkout",
+        "label": "Checkout",
+        "private": true,
+        "allowed_roles": ["buyer"],
+        "shown_in_nav": false
+    }
+]

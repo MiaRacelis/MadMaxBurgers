@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.mdmx-page-content {
+  padding: 0 40px;
+  width: 100%;
+}
+
+.mdmx-page-content h1 {
+  margin-bottom: 30px;
+}
+
+.mdmx-badge {
+  display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+}
+
+.mdmx-badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+.mdmx-badge-warning, .mdmx-warning, .mdmx-float {
+  color: #212529;
+  background-color: #ffc107;
+}
+
+.mdmx-badge-info {
+  color: #fff;
+  background-color: #17a2b8;
+}
+
+.mdmx-badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+
+.mdmx-badge-danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+
+.mdmx-float {
+	position: fixed;
+	width: 80px;
+	height: 80px;
+	bottom: 60px;
+	right: 60px;;
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999;
+  outline: none;
+  border: none;
+  font-size: 30px;
+}
+
+.mdmx-float:hover {
+  background-color: #ffb300;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-active {
+  color: #2196f3 !important;
+}
+
+.wood {
+  width: 100%;
+  background-image: url('/public/img/wood.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.text-warning {
+  text-decoration: none !important;
+}
