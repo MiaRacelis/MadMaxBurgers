@@ -20,7 +20,7 @@ export default function Cart() {
     const totalOrderPrice = cartItems
         .reduce((sum, item) => sum += parseInt(item.order_quantity) * parseFloat(item.price), 0);
 
-    return (<div className="mdmx-page-content">
+    return (<>
         <Container>
             <Row>
                 <Col></Col>
@@ -43,7 +43,7 @@ export default function Cart() {
                             <ListGroup.Item key={index}>
                                 <Container fluid>
                                     <Row>
-                                        <Col xs="8">
+                                        <Col md="8">
                                             <div className="order-product-icon"style={{
                                                 backgroundImage: `url("${process.env.PUBLIC_URL}/img/${item.img_name}")`,
                                                 width: '50px',
@@ -74,5 +74,5 @@ export default function Cart() {
                 <Col></Col>
             </Row>
         </Container>
-    </div>);
+    </>);
 }
