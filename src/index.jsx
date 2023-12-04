@@ -67,7 +67,7 @@ let routes = pages
   .filter(page => isLoggedIn === page.private || isPublic(page))
   .filter(roleHasAccess)
   .map(page => ({ path: page.path, element: routerElements[page.key]}));
-routes = [...routes, { path: '*', element: <Navigate to="/" replace /> }];
+routes = [...routes, { path: '*', element: <Navigate to={process.env.PUBLIC_URL} replace /> }];
 
 const sidebarLinks = pages.filter(page => isLoggedIn
   && Array.from(page.allowed_roles).includes(user.role)

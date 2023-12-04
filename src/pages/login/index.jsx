@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Alert from 'react-bootstrap/Alert';
@@ -22,6 +22,7 @@ if (users.length === 0) {
 }
 
 export default function Login() {
+    const navigate = useNavigate();
     const [ loginErrorShown, setLoginErrorShown ] = useState(false);
     const { Formik } = formik;
     const schema = yup.object().shape({
@@ -35,7 +36,7 @@ export default function Login() {
         if (user) {
             storeItems(STORAGE_ITEMS.user, user);
             storeItems(STORAGE_ITEMS.isAuth, true);
-            window.location.pathname = '/';
+            navigate('/');
         } else {
             setLoginErrorShown(true);
         }
