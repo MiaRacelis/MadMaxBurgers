@@ -118,16 +118,17 @@ export default function Signup() {
         <Container>
             <Row>
                 <Col></Col>
-                <Col md="6">
-                    <a href="/">
-                        <img src="/mdmx.png" alt="Mad Max Burger Logo" style={{ width: '100px', margin: '20px 0px' }} />
-                    </a>
+                <Col>
+                    <img src="/mdmx.png"
+                    alt="Mad Max Burger Logo"
+                    onClick={() => navigate('/')}
+                    style={{ width: '100px', margin: '20px 0px', cursor: 'pointer' }} />
                     { signedUp && <Alert variant="success" onClose={ () => setSignedUp(false) } dismissible>
                         <Alert.Heading>You have successfully signed up!</Alert.Heading>
                         <p>Redirecting you to login page...</p>
                     </Alert> }
                     <h2>Sign Up</h2>
-                    <p>Already a customer? <a href="/login" className="text-warning">Login</a></p>
+                    <p>Already a customer? <a onClick={() => navigate('/login')} className="text-warning">Login</a></p>
                     <Formik validationSchema={schema}
                     initialValues={formValues}
                     onSubmit={handleSubmit}>

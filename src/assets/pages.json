@@ -2,7 +2,7 @@
     {
         "key": "home",
         "path": "/",
-        "label": "Order Now",
+        "text": "Order Now",
         "private": false,
         "allowed_roles": [],
         "shown_in_nav": true
@@ -10,7 +10,7 @@
     {
         "key": "login",
         "path": "/login",
-        "label": "Login",
+        "text": "Login",
         "private": false,
         "allowed_roles": [],
         "shown_in_nav": false
@@ -18,7 +18,7 @@
     {
         "key": "signup",
         "path": "/sign-up",
-        "label": "Sign Up",
+        "text": "Sign Up",
         "private": false,
         "allowed_roles": [],
         "shown_in_nav": false
@@ -26,7 +26,7 @@
     {
         "key": "dashboard",
         "path": "/dashboard",
-        "label": "Dashboard",
+        "text": "Dashboard",
         "private": true,
         "allowed_roles": ["seller"],
         "shown_in_nav": true
@@ -34,7 +34,7 @@
     {
         "key": "orders",
         "path": "/orders",
-        "label": "Orders",
+        "text": "Orders",
         "private": true,
         "allowed_roles": ["seller"],
         "shown_in_nav": true
@@ -42,7 +42,7 @@
     {
         "key": "products",
         "path": "/products",
-        "label": "Products",
+        "text": "Products",
         "private": true,
         "allowed_roles": ["seller"],
         "shown_in_nav": true
@@ -50,7 +50,7 @@
     {
         "key": "customers",
         "path": "/customers",
-        "label": "Customers",
+        "text": "Customers",
         "private": true,
         "allowed_roles": ["seller"],
         "shown_in_nav": true
@@ -58,7 +58,7 @@
     {
         "key": "profile",
         "path": "/profile",
-        "label": "My Profile",
+        "text": "My Profile",
         "private": true,
         "allowed_roles": ["buyer"],
         "shown_in_nav": true
@@ -66,7 +66,7 @@
     {
         "key": "cart",
         "path": "/cart",
-        "label": "My Cart",
+        "text": "My Cart",
         "private": true,
         "allowed_roles": ["buyer"],
         "shown_in_nav": true
@@ -74,7 +74,7 @@
     {
         "key": "orderHistory",
         "path": "/order-history",
-        "label": "Order History",
+        "text": "Order History",
         "private": true,
         "allowed_roles": ["buyer"],
         "shown_in_nav": true
@@ -82,7 +82,7 @@
     {
         "key": "checkout",
         "path": "/checkout",
-        "label": "Checkout",
+        "text": "Checkout",
         "private": true,
         "allowed_roles": ["buyer"],
         "shown_in_nav": false

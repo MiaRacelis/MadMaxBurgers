@@ -89,7 +89,7 @@ export default function Home() {
         setProductFormShown(false);
     };
 
-    return (<div>
+    return (<>
         { productFormShown && <CartForm
             isLoggedIn={isLoggedIn}
             product={product}
@@ -98,26 +98,6 @@ export default function Home() {
             onHide={() => setProductFormShown(false)}
             addToCart={addToCart}
             updateCart={updateCart} /> }
-            
-        { !isLoggedIn && <Navbar className="mdmx-warning mb-3">
-            <Container fluid>
-                <Navbar.Brand href="#">
-                    <img src="mdmx.png"
-                    width="30"
-                    height="30"
-                    className="d-inline-block align-top"
-                    style={{ margin: '0 30px' }}
-                    alt="MadMax Burger Logo"/>
-                    MadMax Burger
-                </Navbar.Brand>
-                <Nav onSelect={(selectedKey) => navigate(selectedKey)}>
-                    <Nav.Item>
-                        <Nav.Link eventKey="/login">Login</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-            </Container>
-        </Navbar> }
-
         <Container fluid>
             <Row className="justify-content-end">
                 <Col lg="3" md="6">
@@ -143,7 +123,5 @@ export default function Home() {
                 </div>
             </Row>
         </Container>
-
-        
-    </div>);
+    </>);
 }

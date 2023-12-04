@@ -1,3 +1,5 @@
+import PageNotFound from './not-found';
+
 import Home from './home';
 import Login from './login';
 import Signup from './signup';
@@ -10,4 +12,6 @@ import Profile from './profile';
 import Checkout from './checkout';
 import OrderHistory from './order-history';
 
-export { Home, Login, Signup, Dashboard, Orders, Products, Customers, Cart, Profile, Checkout, OrderHistory };
+export {
+    PageNotFound,
+    Home, Login, Signup, Dashboard, Orders, Products, Customers, Cart, Profile, Checkout, OrderHistory };

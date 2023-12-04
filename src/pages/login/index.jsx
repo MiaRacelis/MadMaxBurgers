@@ -10,10 +10,6 @@ import * as yup from 'yup';
 
 import { STORAGE_ITEMS, getArrayFromStorage, getItem, storeItems } from '../../utils/storage-utils';
 
-const isAuthenticated = getItem(STORAGE_ITEMS.isAuth) || false;
-const user = getItem(STORAGE_ITEMS.user) || null;
-const isLoggedIn = user !== null && isAuthenticated;
-
 let users = getArrayFromStorage(STORAGE_ITEMS.users);
 if (users.length === 0) {
     const tmpUsers = require('../../assets/users.json');
@@ -42,11 +38,12 @@ export default function Login() {
         }
     };
 
-    return (isLoggedIn ? <Navigate to={'/'} replace /> : <div className="mdmx-page-content">
+    return (<div className="mdmx-page-content">
         <div style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center', }}>
-            <a href="/">
-                <img src="/mdmx.png" alt="Mad Max Burger Logo" style={{ width: '100px', margin: '80px 15px 30px' }} />
-            </a>
+            <img src="/mdmx.png"
+            alt="Mad Max Burger Logo"
+            onClick={ () => navigate('/') }
+            style={{ width: '100px', margin: '80px 15px 30px', cursor: 'pointer' }} />
             <h1>Login</h1>
             <div style={{ width: '40%' }}>
                 { loginErrorShown && <Alert variant="danger" onClose={() => setLoginErrorShown(false)} dismissible>
@@ -92,7 +89,7 @@ export default function Login() {
                             <Stack direction="horizontal" gap={3}>
                                 <Button variant="warning" type="submit">Login</Button>
                                 <div className="vr" />
-                                <span>New customer? <a href="/sign-up" className="text-warning">Sign up</a></span>
+                                <span>New customer? <a onClick={ () => navigate('/sign-up') } className="text-warning">Sign up</a></span>
                             </Stack>
                         </Form>
                     ) }
