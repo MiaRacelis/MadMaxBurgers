@@ -8,13 +8,13 @@
         "delivery_instructions": "Call me when you're near my house.",
         "customer": {
             "id": 2,
-            "username": "miyang",
-            "email_address": "miaracelis.edu@gmail.com",
-            "mobile_number": "+639187530891",
-            "first_name": "Mia",
-            "middle_name": "G.",
-            "last_name": "Racelis",
-            "address": "Phase 9 Package 8 Block 79 Lot 17, Barangay 176, Bagong Silang, Caloocan City"
+            "username": "songbird",
+            "email_address": "lucy.gray@hungergames.com",
+            "mobile_number": "+639201283610",
+            "first_name": "Lucy",
+            "middle_name": "",
+            "last_name": "Gray",
+            "address": "Phase 1 Package 9 Block 8 Lot 1, Barangay 176, Bagong Silang, Caloocan City"
         },
         "items": [
             {
@@ -180,13 +180,13 @@
         "delivery_instructions": "",
         "customer": {
             "id": 3,
-            "username": "intellijm",
-            "email_address": "intellijm@gmail.com",
-            "mobile_number": "+639213711411",
-            "first_name": "JM",
+            "username": "snow",
+            "email_address": "coriolanus.snow@hungergames.com",
+            "mobile_number": "+639102343833",
+            "first_name": "Coriolanus",
             "middle_name": "",
-            "last_name": "",
-            "address": "Bagong Silang, Caloocan City"
+            "last_name": "Snow",
+            "address": "Phase 1 Package 9 Block 8 Lot 2, Barangay 176, Bagong Silang, Caloocan City"
         },
         "items": [
             {

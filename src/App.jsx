@@ -1,4 +1,4 @@
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,7 +10,6 @@ import { isLoggedIn, getCurrentUser, removeAuth } from './utils/auth-utils';
 
 export default function App() {
     const navigate = useNavigate();
-    const location = useLocation();
     const user = getCurrentUser();
     const pages = require('./assets/pages.json');
     const sidebarLinks = user ? pages.filter(page => isLoggedIn()

@@ -24,6 +24,16 @@ import {
   OrderHistory,
 } from './pages';
 
+import { STORAGE_ITEMS, itemExists, storeItems, } from './utils/storage-utils';
+
+if (!itemExists(STORAGE_ITEMS.orders))
+  storeItems(STORAGE_ITEMS.orders, require('./assets/orders.json'));
+
+if (!itemExists(STORAGE_ITEMS.products))
+  storeItems(STORAGE_ITEMS.products, require('./assets/products.json'));
+if (!itemExists(STORAGE_ITEMS.users))
+  storeItems(STORAGE_ITEMS.users, require('./assets/users.json'));
+
 const routes = [
   {
     element: <App />,
