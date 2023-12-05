@@ -8,10 +8,10 @@ import Button from 'react-bootstrap/Button';
 
 import { STORAGE_ITEMS, getArrayFromStorage, getItem } from '../../utils/storage-utils';
 import { formatAmountWithCurrency } from '../../utils/number-utils';
-
-const user = getItem(STORAGE_ITEMS.user) || null;
+import { getCurrentUser } from '../../utils/auth-utils';
 
 export default function Cart() {
+    const user = getCurrentUser();
     const navigate = useNavigate();
     const carts = getArrayFromStorage(STORAGE_ITEMS.carts);
     const userCart = carts.find(cart => cart.customer_id === user.id);
