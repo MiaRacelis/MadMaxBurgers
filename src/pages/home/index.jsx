@@ -43,7 +43,7 @@ export default function Home() {
     };
 
     const handleCardClick = product => {
-        if (user.role === 'seller') {
+        if (user && user.role === 'seller') {
             setProductsList(getArrayFromStorage(STORAGE_ITEMS.products));
             setProduct(product);
             setProductFormShown(true);
