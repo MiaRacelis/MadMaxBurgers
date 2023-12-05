@@ -32,7 +32,7 @@ export function mapToOrder(user, deliveryInstructions) {
         id: generateOrderId(),
         order_date_time: getCurrentDateTime(),
         payment_mode: 'Cash on Delivery',
-        status: 'preparing',
+        status: 'order placed',
         notes: '',
         delivery_instructions: deliveryInstructions,
         customer: rest,

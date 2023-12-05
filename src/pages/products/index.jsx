@@ -11,11 +11,8 @@ import * as yup from 'yup';
 
 import Card from '../../components/Card';
 import './Products.css';
-import { getArrayFromStorage } from '../../utils/storage-utils';
+import { STORAGE_ITEMS, getArrayFromStorage } from '../../utils/storage-utils';
 import { formatAmountWithCurrency } from '../../utils/number-utils';
-
-const PRODUCTS_INIT_DATA = getArrayFromStorage('products');
-const PRODUCT_INIT_DATA = { id: null, name: '', description: '', price: 0.00, quantity: 0 };
 
 function ProductForm(props) {
     const { Formik } = formik;
@@ -109,11 +106,13 @@ function ProductForm(props) {
 }
 
 export default function Products() {
+    const PRODUCT_INIT_DATA = { id: null, name: '', description: '', price: 0.00, quantity: 0 };
     const [ product, setProduct ] = useState(PRODUCT_INIT_DATA);
     const [ productFormShown, setProductFormShown ] = useState(false);
-    const [ productsList, setProductsList ] = useState(PRODUCTS_INIT_DATA);
+    const [ productsList, setProductsList ] = useState(getArrayFromStorage(STORAGE_ITEMS.products));
 
     const handleCardClick = product => {
+        setProductsList(getArrayFromStorage(STORAGE_ITEMS.products));
         setProduct(product);
         setProductFormShown(true);
     };

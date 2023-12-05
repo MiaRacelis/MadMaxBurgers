@@ -35,7 +35,7 @@ export default function Login() {
         if (user) {
             storeItems(STORAGE_ITEMS.user, user);
             storeItems(STORAGE_ITEMS.isAuth, true);
-            navigate('/');
+            navigate(user.role === 'seller' ? '/dashboard' : '/');
         } else {
             setLoginErrorShown(true);
         }

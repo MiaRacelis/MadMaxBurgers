@@ -41,6 +41,7 @@ export default function Home() {
     };
 
     const handleCardClick = product => {
+        if (user.role === 'seller') return;
         setCart(getCart());
         setProduct(product);
         setProductFormShown(true);

@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Alert from 'react-bootstrap/Alert';
 import OrderSummary from '../orders/OrderSummary';
 
 import { getCurrentUser } from '../../utils/auth-utils';
@@ -17,6 +18,7 @@ export default function Checkout() {
     const navigate = useNavigate();
     const user = getCurrentUser();
     const [ deliveryInstructions, setDeliveryInstructions ] = useState('');
+    const [ isOrderPlaced, setOrderPlaced ] = useState(false);
     const placeOrder = () => {
         const orderPlaced = mapToOrder(user, deliveryInstructions);
         const products = getArrayFromStorage(STORAGE_ITEMS.products);
@@ -28,7 +30,8 @@ export default function Checkout() {
         storeItems(STORAGE_ITEMS.products, products);
         storeItems(STORAGE_ITEMS.orders, [orderPlaced, ...orders]);
         clearCartItems(user.id);
-        setTimeout(() => navigate('/order-history'), 3000);
+        setOrderPlaced(true);
+        setTimeout(() => navigate('/order-history'), 2000);
     };
     return (<div>
         <Container>
@@ -41,6 +44,12 @@ export default function Checkout() {
             </Row>
             <Row className="mb-4">
                 <Col>
+                    { isOrderPlaced && <Alert variant="success"
+                    className="mb-3"
+                    onClose={ () => setOrderPlaced(false) } dismissible>
+                        <Alert.Heading>You have successfully placed your order!</Alert.Heading>
+                        <p>Redirecting you to order history for tracking...</p>
+                    </Alert> }
                     <Accordion defaultActiveKey="0">
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Delivery Information</Accordion.Header>
