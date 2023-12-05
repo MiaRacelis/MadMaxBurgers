@@ -104,7 +104,7 @@
     {
         "id": "MDMXB-JKY281",
         "order_date_time": "November 7, 2023 2:45 PM",
-        "payment_mode": "Credit Card",
+        "payment_mode": "Cash on Delivery",
         "status": "delivered",
         "notes": "",
         "delivery_instructions": "",
@@ -174,7 +174,7 @@
     {
         "id": "MDMXB-JMH111",
         "order_date_time": "December 1, 2023 8:32 AM",
-        "payment_mode": "Debit Card",
+        "payment_mode": "Cash on Delivery",
         "status": "order placed",
         "notes": "Make if freshly cooked!",
         "delivery_instructions": "",

@@ -26,6 +26,7 @@ const CartForm = ({
         .find(item => item.id === product.id && item.order_quantity > 0);
     const initOrderQuantity = isLoggedIn() && cartItem ? cartItem.order_quantity : 0;
     const [ orderQuantity, setOrderQuantity ] = useState(initOrderQuantity);
+    const [ stocks, setStocks ] = useState(product.quantity);
     const schema = yup.object().shape({
         orderQuantity: yup.number('Please input a valid number.')
             .required()
@@ -69,9 +70,15 @@ const CartForm = ({
                                                 disabled={!isLoggedIn()}
                                                 onBlur={handleBlur}
                                                 onChange={e => {
-                                                    let newValue = parseInt(e.target.value);
+                                                    const availableStock = product.quantity;
+                                                    let newValue = e.target.value;
                                                     setOrderQuantity(newValue);
                                                     setFieldValue(e.target.name, newValue);
+                                                    newValue = newValue ? parseInt(newValue) : 0;
+                                                    let newStockValue = newValue > 0 && newValue <= availableStock
+                                                        ? availableStock - newValue
+                                                        : (newValue > availableStock ? 0 : availableStock);
+                                                    setStocks(newStockValue);
                                                 }}
                                                 isInvalid={touched.orderQuantity && errors.orderQuantity}
                                                 isValid={touched.orderQuantity && !errors.orderQuantity} />
@@ -79,6 +86,9 @@ const CartForm = ({
                                                 {errors.orderQuantity}
                                             </Form.Control.Feedback>
                                         </InputGroup>
+                                        <div>
+                                            <b>Stocks</b>: <span className={ `text-${stocks > 10 ? 'success' : 'danger'}` }>{`${stocks} ${stocks <= 10 && stocks > 0 ? 'items left' : ''}`}</span>
+                                        </div>
                                         { !isLoggedIn() && <Button variant="warning"
                                         style={{ float: 'right' }}
                                         onClick={() => navigate('/login')}>

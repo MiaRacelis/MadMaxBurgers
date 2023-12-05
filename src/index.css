@@ -96,3 +96,11 @@ code {
 a {
   cursor: pointer !important;
 }
+
+.c-right {
+  clear: right;
+}
+
+.f-right {
+  float: right;
+}
