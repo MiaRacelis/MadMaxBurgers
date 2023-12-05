@@ -1,21 +1,16 @@
-import { useState, useEffect } from "react";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
-import './Orders.css';
 import Table from '../../components/Table';
 import Badge from '../../components/Badge';
+import OrderDetails from './OrderDetails';
+import './Orders.css';
 import { formatWithComma, formatAmountWithCurrency } from '../../utils/number-utils';
 import { STORAGE_ITEMS, getArrayFromStorage } from '../../utils/storage-utils';
 
-const FINAL_STATUSES = ['delivered', 'cancelled'];
 const orderStatuses = require('../../assets/order-statuses.json');
 
 const getContextualClassByStatus = status => {
@@ -54,72 +49,6 @@ const fields = [
         text: 'Actions'
     }
 ];
-
-function OrderDetails(props) {
-    const [details, setDetails] = useState(props.details);
-    useEffect(() => setDetails(props.details), [props.details]);
-
-    const handleChangeStatus = status => {
-        setDetails({...details, status: status.text});
-        props.onChangeStatus(status);
-    };
-    return (
-        <Modal
-        {...props}
-        size="md"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    { `Order #${details.id}` }
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <ListGroup variant="flush">
-                    <ListGroup.Item><b>Name</b>: {details.customer_name}</ListGroup.Item>
-                    <ListGroup.Item><b>Contact No.</b>: {details.customer.mobile_number}</ListGroup.Item>
-                    <ListGroup.Item><b>Email</b>: {details.customer.email_address}</ListGroup.Item>
-                    <ListGroup.Item><b>Delivery address</b>: {details.customer.address}</ListGroup.Item>
-                    <ListGroup.Item><b>Delivery instructions</b>: {details.delivery_instructions || 'N/A'}</ListGroup.Item>
-                    <ListGroup.Item><b>Date ordered</b>: {details.order_date_time}</ListGroup.Item>
-                    <ListGroup.Item><b>Mode of payment</b>: {details.payment_mode || 'N/A'}</ListGroup.Item>
-                    { details.notes && <ListGroup.Item><b>Notes to seller</b>: {details.notes}</ListGroup.Item> }
-                    { details.status === 'cancelled' && details.cancel_reason && <ListGroup.Item>
-                        <b>Reason for cancellation</b>: {details.cancel_reason}
-                    </ListGroup.Item> }
-                    <ListGroup.Item><b>Orders</b>:</ListGroup.Item>
-                    { details.items.map((item, index) => (
-                        <ListGroup.Item key={index}>
-                            <div className="order-product-icon" style={{ backgroundImage: `url("${process.env.PUBLIC_URL}/img/${item.product.img_name}")` }}></div>
-                            <span>{item.quantity} x {item.product.name}</span>
-                            <span className="order-product-price">{ formatAmountWithCurrency(item.totalProductPrice) }</span>
-                        </ListGroup.Item>
-                    )) }
-                    <ListGroup.Item>
-                        <span className="order-product-price"><b>{ details.total_order_price }</b></span>
-                    </ListGroup.Item>
-                </ListGroup>
-                <br/>
-            </Modal.Body>
-            <Modal.Footer>
-                <DropdownButton
-                disabled={FINAL_STATUSES.includes(details.status)}
-                variant={getContextualClassByStatus(details.status)}
-                title={details.status.toUpperCase()}>
-                    { orderStatuses.map((status, index) => (
-                        <Dropdown.Item
-                        key={index}
-                        onClick={() => handleChangeStatus(status)}>
-                            {status.text.toUpperCase()}
-                        </Dropdown.Item>
-                    )) }
-                </DropdownButton>
-                <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
-        </Modal>
-    );
-}
 
 export default function Orders() {
     const getOrders = () => getArrayFromStorage(STORAGE_ITEMS.orders);
@@ -185,9 +114,10 @@ export default function Orders() {
             <Row>
                 { orderDetails && <OrderDetails
                     details={orderDetails}
-                    onChangeStatus={status => handleChangeStatus(status)}
+                    handleChangeStatus={status => handleChangeStatus(status)}
                     show={orderShown}
-                    onHide={() => setOrderShown(false)} /> }
+                    onHide={() => setOrderShown(false)}
+                    getContextualClassByStatus={getContextualClassByStatus} /> }
                 <Table
                 fields={fields}
                 data={orderList.map(mapOrders).sort(sortOrdersByDate)}
