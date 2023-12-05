@@ -8,6 +8,7 @@ import './Orders.css';
 import { formatAmountWithCurrency } from '../../utils/number-utils';
 
 const OrderDetails = ({
+    currentUser,
     details,
     handleChangeStatus,
     show,
@@ -57,7 +58,7 @@ const OrderDetails = ({
                 <br/>
             </Modal.Body>
             <Modal.Footer>
-                <DropdownButton
+                { currentUser && currentUser.role === 'seller' && <DropdownButton
                 disabled={FINAL_STATUSES.includes(details.status)}
                 variant={getContextualClassByStatus(details.status)}
                 title={details.status.toUpperCase()}>
@@ -68,7 +69,7 @@ const OrderDetails = ({
                             {status.text.toUpperCase()}
                         </Dropdown.Item>
                     )) }
-                </DropdownButton>
+                </DropdownButton> }
                 <Button onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>

@@ -8,6 +8,7 @@ import Table from '../../components/Table';
 import Badge from '../../components/Badge';
 import OrderDetails from './OrderDetails';
 import './Orders.css';
+import { getCurrentUser } from '../../utils/auth-utils';
 import { formatWithComma, formatAmountWithCurrency } from '../../utils/number-utils';
 import { STORAGE_ITEMS, getArrayFromStorage } from '../../utils/storage-utils';
 
@@ -51,6 +52,7 @@ const fields = [
 ];
 
 export default function Orders() {
+    let user = getCurrentUser();
     const getOrders = () => getArrayFromStorage(STORAGE_ITEMS.orders);
     const [ orderList, setOrderList ] = useState(getOrders());
     const [ orderDetails, setOrderDetails ] = useState(null);
@@ -76,6 +78,7 @@ export default function Orders() {
             text: 'View Details',
             classes: 'btn btn-sm btn-primary',
             handleClick: order => {
+                user = getCurrentUser();
                 setOrderShown(true);
                 setOrderDetails(order);
             }
@@ -113,6 +116,7 @@ export default function Orders() {
             </Row>
             <Row>
                 { orderDetails && <OrderDetails
+                    currentUser={user}
                     details={orderDetails}
                     handleChangeStatus={status => handleChangeStatus(status)}
                     show={orderShown}
