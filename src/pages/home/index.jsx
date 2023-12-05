@@ -100,7 +100,12 @@ export default function Home() {
                 </Col>
             </Row>
             <Row>
-                <div className="mdmx-products">
+                { productsList.length === 0 && <Col className="text-center">
+                    <h1 style={{ margin: '100px 15px', color: '#999' }}>
+                        No products found for "{productSearch}"...
+                    </h1>
+                </Col> }
+                { productsList.length > 0 && <div className="mdmx-products"> 
                     { productsList.sort((p1,p2) => p2.id - p1.id).map(product => (
                         <Card key={product.id}
                             data={product}
@@ -113,7 +118,7 @@ export default function Home() {
                                 : 'Unavailable'}
                             handleClick={handleCardClick} />
                     ))}
-                </div>
+                </div> }
             </Row>
         </Container>
     </>);
