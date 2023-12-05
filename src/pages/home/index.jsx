@@ -11,6 +11,7 @@ import { formatAmountWithCurrency } from '../../utils/number-utils';
 import { getCurrentUser, isLoggedIn } from '../../utils/auth-utils';
 import Card from '../../components/Card'
 import CartForm from '../cart/CartForm';
+import ProductForm from '../products/ProductForm';
 import '../products/Products.css';
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
     
     const [ product, setProduct ] = useState(PRODUCT_INIT_DATA);
     const [ productFormShown, setProductFormShown ] = useState(false);
+    const [ cartFormShown, setCartFormShown ] = useState(false);
     const [ productSearch, setProductSearch ] = useState('');
     const [ productsList, setProductsList ] = useState(getProducts());
     const [ cart, setCart ] = useState(CART_INIT_DATA);
@@ -41,10 +43,15 @@ export default function Home() {
     };
 
     const handleCardClick = product => {
-        if (user.role === 'seller') return;
-        setCart(getCart());
-        setProduct(product);
-        setProductFormShown(true);
+        if (user.role === 'seller') {
+            setProductsList(getArrayFromStorage(STORAGE_ITEMS.products));
+            setProduct(product);
+            setProductFormShown(true);
+        } else {
+            setCart(getCart());
+            setProduct(product);
+            setCartFormShown(true);
+        }
     };
 
     const updateCart = productOrdered => {
@@ -57,7 +64,7 @@ export default function Home() {
         });
         const updatedCarts = carts.map(cart => cart.customer_id === userCart.customer_id ? userCart : cart);
         storeItems(STORAGE_ITEMS.carts, updatedCarts);
-        setProductFormShown(false);
+        setCartFormShown(false);
     };
 
     const addToCart = productOrdered => {
@@ -81,17 +88,41 @@ export default function Home() {
             ? tmpCarts.map(cart => cart.customer_id === tmpCart.customer_id ? tmpCart : cart)
             : [tmpCart, ...tmpCarts];
         storeItems(STORAGE_ITEMS.carts, carts);
+        setCartFormShown(false);
+    };
+
+    const handleProductAdd = product => {
+        const productIds = productsList.map(product => parseInt(product.id));
+        const maxId = Math.max(...productIds);
+        product.id = maxId + 1;
+        const newProducts = [product, ...productsList]
+        storeItems(STORAGE_ITEMS.products, newProducts);
+        setProductsList(newProducts);
+        setProductFormShown(false);
+    };
+
+    const handleProductUpdate = product => {
+        const productIndex = productsList.findIndex(newProduct => newProduct.id === product.id);
+        productsList[productIndex] = product;
+        storeItems(STORAGE_ITEMS.products, productsList);
+        setProductsList(productsList);
         setProductFormShown(false);
     };
 
     return (<>
-        { productFormShown && <CartForm
+        { cartFormShown && <CartForm
             product={product}
             cart={cart}
-            show={productFormShown}
-            onHide={() => setProductFormShown(false)}
+            show={cartFormShown}
+            onHide={() => setCartFormShown(false)}
             addToCart={addToCart}
             updateCart={updateCart} /> }
+        { productFormShown && <ProductForm
+            product={product}
+            show={productFormShown}
+            onHide={() => setProductFormShown(false)}
+            handleProductAdd={handleProductAdd}
+            handleProductUpdate={handleProductUpdate} /> }
         <Container fluid>
             <Row className="justify-content-end">
                 <Col lg="3" md="6">

@@ -24,9 +24,9 @@ const CartForm = ({
     const { Formik } = formik;
     const cartItem = cart.items
         .find(item => item.id === product.id && item.order_quantity > 0);
-    const initOrderQuantity = isLoggedIn() && cartItem ? cartItem.order_quantity : 0;
+    const initOrderQuantity = isLoggedIn() && cartItem ? parseInt(cartItem.order_quantity) : 0;
     const [ orderQuantity, setOrderQuantity ] = useState(initOrderQuantity);
-    const [ stocks, setStocks ] = useState(product.quantity);
+    const [ stocks, setStocks ] = useState(product.quantity - initOrderQuantity);
     const schema = yup.object().shape({
         orderQuantity: yup.number('Please input a valid number.')
             .required()

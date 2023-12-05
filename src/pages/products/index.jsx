@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 
 import Card from '../../components/Card';
 import ProductForm from './ProductForm';
-import { STORAGE_ITEMS, getArrayFromStorage } from '../../utils/storage-utils';
+import { STORAGE_ITEMS, getArrayFromStorage, storeItems } from '../../utils/storage-utils';
 import { formatAmountWithCurrency } from '../../utils/number-utils';
 import './Products.css';
 
@@ -25,14 +25,15 @@ export default function Products() {
         const maxId = Math.max(...productIds);
         product.id = maxId + 1;
         const newProducts = [product, ...productsList]
-        localStorage.setItem('products', JSON.stringify(newProducts));
+        storeItems(STORAGE_ITEMS.products, newProducts);
         setProductsList(newProducts);
         setProductFormShown(false);
     };
+
     const handleProductUpdate = product => {
         const productIndex = productsList.findIndex(newProduct => newProduct.id === product.id);
         productsList[productIndex] = product;
-        localStorage.setItem('products', JSON.stringify(productsList));
+        storeItems(STORAGE_ITEMS.products, productsList);
         setProductsList(productsList);
         setProductFormShown(false);
     };
