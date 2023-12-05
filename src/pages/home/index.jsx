@@ -6,34 +6,31 @@ import {
     Row
 } from 'react-bootstrap';
 
-import { STORAGE_ITEMS, getArrayFromStorage, getItem, storeItems } from '../../utils/storage-utils';
+import { STORAGE_ITEMS, getArrayFromStorage, storeItems } from '../../utils/storage-utils';
 import { formatAmountWithCurrency } from '../../utils/number-utils';
+import { getCurrentUser, isLoggedIn } from '../../utils/auth-utils';
 import Card from '../../components/Card'
 import CartForm from '../cart/CartForm';
 import '../products/Products.css';
 
-const isAuthenticated = getItem(STORAGE_ITEMS.isAuth) || false;
-const user = getItem(STORAGE_ITEMS.user) || null;
-const isLoggedIn = user !== null && isAuthenticated;
-
-const PRODUCT_INIT_DATA = { id: null, name: '', description: '', price: 0.00, quantity: 0 };
-const CART_INIT_DATA = { customer_id: isLoggedIn ? user.id : null, items: [] };
-
-const getProducts = () => getArrayFromStorage(STORAGE_ITEMS.products);
-const getCart = () => {
-    const carts = getArrayFromStorage(STORAGE_ITEMS.carts)
-    if (!isLoggedIn) return CART_INIT_DATA;
-    const userCart = carts.find(cart => cart.customer_id === user.id);
-    return userCart || CART_INIT_DATA;
-};
-
 export default function Home() {
+    const user = getCurrentUser();
+    const PRODUCT_INIT_DATA = { id: null, name: '', description: '', price: 0.00, quantity: 0 };
+    const CART_INIT_DATA = { customer_id: isLoggedIn() ? user.id : null, items: [] };
+    const getProducts = () => getArrayFromStorage(STORAGE_ITEMS.products);
+    
     const [ product, setProduct ] = useState(PRODUCT_INIT_DATA);
     const [ productFormShown, setProductFormShown ] = useState(false);
     const [ productSearch, setProductSearch ] = useState('');
     const [ productsList, setProductsList ] = useState(getProducts());
     const [ cart, setCart ] = useState(CART_INIT_DATA);
 
+    const getCart = () => {
+        const carts = getArrayFromStorage(STORAGE_ITEMS.carts)
+        if (!isLoggedIn()) return CART_INIT_DATA;
+        const userCart = carts.find(cart => cart.customer_id === user.id);
+        return userCart || CART_INIT_DATA;
+    };
     const handleProductSearch = event => {
         const searchValue = event.target.value;
         const filteredProducts = searchValue
@@ -88,7 +85,6 @@ export default function Home() {
 
     return (<>
         { productFormShown && <CartForm
-            isLoggedIn={isLoggedIn}
             product={product}
             cart={cart}
             show={productFormShown}

@@ -10,9 +10,9 @@ import {
 } from 'react-bootstrap';
 import * as formik from 'formik';
 import * as yup from 'yup';
+import { isLoggedIn } from '../../utils/auth-utils';
 
 const CartForm = ({
-    isLoggedIn,
     product,
     cart,
     show,
@@ -24,7 +24,7 @@ const CartForm = ({
     const { Formik } = formik;
     const cartItem = cart.items
         .find(item => item.id === product.id && item.order_quantity > 0);
-    const initOrderQuantity = isLoggedIn && cartItem ? cartItem.order_quantity : 0;
+    const initOrderQuantity = isLoggedIn() && cartItem ? cartItem.order_quantity : 0;
     const [ orderQuantity, setOrderQuantity ] = useState(initOrderQuantity);
     const schema = yup.object().shape({
         orderQuantity: yup.number('Please input a valid number.')
@@ -66,7 +66,7 @@ const CartForm = ({
                                                 type="number"
                                                 name="orderQuantity"
                                                 value={orderQuantity}
-                                                disabled={!isLoggedIn}
+                                                disabled={!isLoggedIn()}
                                                 onBlur={handleBlur}
                                                 onChange={e => {
                                                     let newValue = parseInt(e.target.value);
@@ -79,12 +79,12 @@ const CartForm = ({
                                                 {errors.orderQuantity}
                                             </Form.Control.Feedback>
                                         </InputGroup>
-                                        { !isLoggedIn && <Button variant="warning"
+                                        { !isLoggedIn() && <Button variant="warning"
                                         style={{ float: 'right' }}
                                         onClick={() => navigate('/login')}>
                                            Login to order
                                         </Button> }
-                                        { isLoggedIn && <Button type="submit"
+                                        { isLoggedIn() && <Button type="submit"
                                         variant="warning"
                                         disabled={orderQuantity < 1 && !cartItem}
                                         style={{ float: 'right' }}>
