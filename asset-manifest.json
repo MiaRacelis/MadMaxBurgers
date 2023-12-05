@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/MadMaxBurgers/static/css/main.e39c1b13.css",
-    "main.js": "/MadMaxBurgers/static/js/main.d87dcf22.js",
+    "main.js": "/MadMaxBurgers/static/js/main.bcd29f6f.js",
     "static/js/787.f5778721.chunk.js": "/MadMaxBurgers/static/js/787.f5778721.chunk.js",
     "static/media/wood.png": "/MadMaxBurgers/static/media/wood.da892843bf96eed74883.png",
     "index.html": "/MadMaxBurgers/index.html",
     "main.e39c1b13.css.map": "/MadMaxBurgers/static/css/main.e39c1b13.css.map",
-    "main.d87dcf22.js.map": "/MadMaxBurgers/static/js/main.d87dcf22.js.map",
+    "main.bcd29f6f.js.map": "/MadMaxBurgers/static/js/main.bcd29f6f.js.map",
     "787.f5778721.chunk.js.map": "/MadMaxBurgers/static/js/787.f5778721.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e39c1b13.css",
-    "static/js/main.d87dcf22.js"
+    "static/js/main.bcd29f6f.js"
   ]
 }
