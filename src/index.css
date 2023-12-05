@@ -104,3 +104,9 @@ a {
 .f-right {
   float: right;
 }
+
+.tbl-empty h4 {
+  color: #555;
+  margin: 15px;
+  text-align: center;
+}

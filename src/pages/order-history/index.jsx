@@ -1,14 +1,23 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
 
 import Table from '../../components/Table';
+import { getCurrentUser, isLoggedIn } from '../../utils/auth-utils';
 import { formatWithComma, formatAmountWithCurrency } from '../../utils/number-utils';
-import { STORAGE_ITEMS, getArrayFromStorage, getItem } from '../../utils/storage-utils';
+import { STORAGE_ITEMS, getArrayFromStorage } from '../../utils/storage-utils';
 
 export default function OrderHistory() {
-    const isAuthenticated = getItem(STORAGE_ITEMS.isAuth) || false;
-    const user = getItem(STORAGE_ITEMS.user) || null;
-    const isLoggedIn = user !== null && isAuthenticated;
-    const userOrders = !isLoggedIn ? [] : getArrayFromStorage(STORAGE_ITEMS.orders)
+    const navigate = useNavigate();
+    const tmpOrderStatuses = Array.from(require('../../assets/order-statuses.json'))
+        .map(status => status.text);
+    const orderStatuses = ['order placed', ...tmpOrderStatuses];
+    const user = getCurrentUser();
+    const getUserOrders = () => !isLoggedIn() ? [] : getArrayFromStorage(STORAGE_ITEMS.orders)
         .filter(order => order.customer.id === user.id)
         .map(order => {
             order.items.forEach(item => item.totalProductPrice = parseFloat(item.product.price) * item.quantity);
@@ -20,6 +29,8 @@ export default function OrderHistory() {
             order.total_items = formatWithComma(totalOrderItems);
             return order;
         }).sort((order1, order2) => new Date(order2.order_date_time) - new Date(order1.order_date_time));
+    const [ userOrders ] = useState(getUserOrders());
+    const [ statusFilter, setStatusFilter ] = useState('order placed');
     const fields = [
         {
             key: 'id',
@@ -47,17 +58,37 @@ export default function OrderHistory() {
             text: 'View Details',
             classes: 'btn btn-sm btn-primary',
             handleClick: order => {
-                console.log(order)
                 // setOrderShown(true);
                 // setOrderDetails(order);
             }
         }
     ];
     return (<>
-        <Container>
-            <h2>Order History</h2>
-            <br />
-            <Table fields={fields} data={userOrders} actions={tableActions} />
+        <Container fluid>
+            <Row className="mb-3">
+                <Col sm="6"><h2>Order History</h2></Col>
+                <Col sm="6"><Button variant="warning"
+                className="f-right"
+                onClick={() => navigate('/')}>Add Order</Button></Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Nav fill variant="tabs" defaultActiveKey="order placed" onSelect={status => {
+                        getUserOrders();
+                        setStatusFilter(status);
+                    }}>
+                        { orderStatuses.map((status, index) => (
+                            <Nav.Item key={index}>
+                                <Nav.Link eventKey={status}>{status.toUpperCase()}</Nav.Link>
+                            </Nav.Item>
+                        ))}
+                    </Nav>
+                    <Table fields={fields}
+                    data={userOrders.filter(order => order.status === statusFilter)}
+                    emptyMessage={`No orders ${statusFilter}.`}
+                    actions={tableActions} />`
+                </Col>
+            </Row>
         </Container>
     </>);
 }
